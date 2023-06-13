@@ -88,8 +88,21 @@ h3 {
   margin-top: 115px;
 }
 
-.form img {
-  margin-bottom: 40px;
+.user-icon,
+.pass-icon {
+  position: absolute;
+  right: -18px;
+  bottom: 55px;
+}
+
+.form input:focus + .user-icon,
+.form input:not(:placeholder-shown):valid + .user-icon {
+  right: 35px;
+}
+
+.form input:focus + .pass-icon,
+.form input:not(:placeholder-shown):valid + .pass-icon {
+  right: 35px;
 }
 
 .normal-input {
@@ -98,4 +111,16 @@ h3 {
 
 .error-input {
   border: 2px solid #e9b425;
+}
+
+.warning-login {
+  width: 300px;
+  position: absolute;
+  left: 41px;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #e9b425;
 }

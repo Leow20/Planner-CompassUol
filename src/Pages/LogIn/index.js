@@ -48,7 +48,7 @@ const LogIn = () => {
               onChange={(e) => setEmail(e.target.value)}
               className={erro && erro ? "error-input" : "normal-input"}
             />
-            <img src={userIcon} alt="icone de usuario" />
+            <img className="user-icon" src={userIcon} alt="icone de usuario" />
           </div>
 
           <div className="input-container">
@@ -59,11 +59,16 @@ const LogIn = () => {
               onChange={(e) => setSenha(e.target.value)}
               className={erro && erro ? "error-input" : "normal-input"}
             />
-            <img src={passwordIcon} alt="icone de password" />
+            <img
+              className="pass-icon"
+              src={passwordIcon}
+              alt="icone de password"
+            />
           </div>
-
           {erro && (
-            <span>Wow, invalid username or password. Please, try again!</span>
+            <span className="warning-login">
+              Wow, invalid username or password. Please, try again!
+            </span>
           )}
 
           <button type="submit" onClick={sigIn}>
