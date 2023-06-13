@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { auth } from "../firebaseConnection";
-import { linkWithPopup, onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { Navigate } from "react-router-dom";
 
 const Private = ({ children }) => {
@@ -30,7 +30,11 @@ const Private = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <div></div>;
+    return (
+      <div>
+        <h1>Carregando...</h1>
+      </div>
+    );
   }
 
   if (!singned) {

@@ -1,0 +1,31 @@
+header {
+  max-width: 1920px;
+  height: 130px;
+  background-color: #fff;
+  box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
+  position: relative;
+}
+
+.box-container {
+  width: 588px;
+  height: 64px;
+  position: absolute;
+  top: 32px;
+  border-radius: 0px 14px 15px 0px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0px 10px 24px;
+
+  background-color: #000;
+  color: #fff;
+}
+
+.title-container {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.subtitle-container {
+  font-size: 14px;
+  font-weight: 400;
+}

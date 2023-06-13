@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { auth } from "../../firebaseConnection";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 import userIcon from "../../assets/icons/icon-user.svg";
 import passwordIcon from "../../assets/icons/icon-password.svg";
@@ -13,15 +14,18 @@ import "./login.css";
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [erro, setErro] = useState(null);
+  const navigate = useNavigate();
 
   async function sigIn(e) {
     e.preventDefault();
     await signInWithEmailAndPassword(auth, email, senha)
-      .then((value) => {
-        console.log(value.user);
+      .then(() => {
         console.log("Logado com Sucesso");
+        navigate("/dashboard");
       })
       .catch(() => {
+        setErro(true);
         console.log("Error ao logar");
       });
   }
@@ -42,6 +46,7 @@ const LogIn = () => {
               placeholder="user name"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              className={erro && erro ? "error-input" : "normal-input"}
             />
             <img src={userIcon} alt="icone de usuario" />
           </div>
@@ -52,9 +57,14 @@ const LogIn = () => {
               placeholder="password"
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
+              className={erro && erro ? "error-input" : "normal-input"}
             />
             <img src={passwordIcon} alt="icone de password" />
           </div>
+
+          {erro && (
+            <span>Wow, invalid username or password. Please, try again!</span>
+          )}
 
           <button type="submit" onClick={sigIn}>
             Log In

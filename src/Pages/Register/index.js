@@ -103,7 +103,7 @@ const LogIn = () => {
         <h1 className="big-title">Welcome,</h1>
         <p className="sub-title">Please, register to continue</p>
 
-        <form className="form">
+        <form className="form form-register">
           <div className="input-container">
             <span>first name</span>
             <input

@@ -1,8 +1,8 @@
-.form div:first-child {
+.form-register div:first-child {
   margin-top: 67px;
 }
 
-.form input {
+.form-register input {
   margin-bottom: 18px;
 }
 
@@ -20,7 +20,7 @@ span {
   margin-top: 18px;
 }
 
-.form button {
+.form-register button {
   width: 478px;
   margin-top: 56px;
 }

@@ -62,7 +62,7 @@ h3 {
   color: #e0e0e0;
   margin: 0 18px 33px 0;
   padding-left: 20px;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .form input::placeholder {
@@ -78,7 +78,7 @@ h3 {
   width: 379px;
   height: 67px;
   background: linear-gradient(90deg, #ff2d04 0%, #c13216 100%);
-  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 50px;
   border: none;
   font-weight: 700;
@@ -97,5 +97,5 @@ h3 {
 }
 
 .error-input {
-  border: 2px solid yellow;
+  border: 2px solid #e9b425;
 }
