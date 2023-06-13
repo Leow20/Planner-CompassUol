@@ -14,14 +14,15 @@ const LogIn = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  async function sigIn() {
+  async function sigIn(e) {
     e.preventDefault();
     await signInWithEmailAndPassword(auth, email, senha)
-      .then(() => {
-        console.log("Cadastrado com Sucesso");
+      .then((value) => {
+        console.log(value.user);
+        console.log("Logado com Sucesso");
       })
       .catch(() => {
-        console.log("Error ao cadastrar");
+        console.log("Error ao logar");
       });
   }
 
