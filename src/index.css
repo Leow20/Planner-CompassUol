@@ -3,12 +3,12 @@
   padding: 0;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Mulish";
 }
 
-a, button{
+a,
+button {
   text-decoration: none;
   cursor: pointer;
 }
-
-

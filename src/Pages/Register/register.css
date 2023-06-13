@@ -1,0 +1,26 @@
+.form div:first-child {
+  margin-top: 67px;
+}
+
+.form input {
+  margin-bottom: 18px;
+}
+
+span {
+  color: #e0e0e0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 20px;
+  padding-right: 17px;
+  width: 100px;
+}
+
+span {
+  margin-top: 18px;
+}
+
+.form button {
+  width: 478px;
+  margin-top: 56px;
+}
