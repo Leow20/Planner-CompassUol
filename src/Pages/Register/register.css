@@ -25,3 +25,23 @@ span {
   width: 478px;
   margin-top: 56px;
 }
+
+.warning-register {
+  width: 500px;
+  position: absolute;
+  left: 0px;
+  bottom: 92px;
+  display: flex;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #e9b425;
+  align-items: center;
+  justify-content: center;
+}
+
+.warning-register a {
+  color: #e0e0e0;
+  text-decoration: underline;
+}

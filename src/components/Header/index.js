@@ -3,6 +3,7 @@ import React from "react";
 import LogoutIcon from "../../assets/icons/arrow-right-north 1.svg";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebaseConnection";
+import Weather from "../../components/Weather";
 
 import "./header.css";
 
@@ -19,6 +20,8 @@ const Header = () => {
           Use this planner to organize your daily issues.
         </p>
       </div>
+      <Weather />
+
       <div className="logout" onClick={handleLogout}>
         <span>Logout</span>
         <img src={LogoutIcon} />
