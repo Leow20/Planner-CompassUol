@@ -12,6 +12,7 @@ import imgBackground from "../../assets/img/Backgorund.jpg";
 
 //Styles
 import "./login.css";
+import { toast } from "react-toastify";
 
 const LogIn = () => {
   const [email, setEmail] = useState("");
@@ -28,6 +29,7 @@ const LogIn = () => {
     await signInWithEmailAndPassword(auth, email, senha)
       .then(() => {
         console.log("Logado com Sucesso");
+        toast.success("Bem-Vindo!");
         navigate("/dashboard");
       })
       .catch((error) => {

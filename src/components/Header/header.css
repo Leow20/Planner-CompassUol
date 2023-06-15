@@ -29,3 +29,66 @@ header {
   font-size: 14px;
   font-weight: 400;
 }
+
+.logout {
+  position: absolute;
+  right: 0;
+  top: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout img {
+  width: 20px;
+  height: 20px;
+}
+
+.logout span {
+  font-weight: 400;
+  font-size: 17px;
+  color: #000;
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+.dark-logo img {
+  position: absolute;
+  top: 21px;
+  right: 23px;
+}
+
+.time-container {
+  position: absolute;
+  left: 770px;
+  top: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.time-content {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 20px;
+  color: #3b3e45;
+  text-align: center;
+  padding-right: 0px;
+  width: 200px;
+}
+
+.date-content {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  color: #3b3e45;
+  text-align: center;
+  padding-right: 0px;
+  width: 200px;
+}
+
+.weather {
+  position: absolute;
+  right: 585px;
+  top: 26px;
+}

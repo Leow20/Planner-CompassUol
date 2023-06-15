@@ -1,0 +1,78 @@
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 35px 0 0 24px;
+}
+
+.form-planner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+button {
+  margin-left: 10px;
+}
+
+.submit-buttons {
+  position: absolute;
+  right: 23px;
+  top: 169px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.input-title,
+.select-day,
+.select-time {
+  width: 391px;
+  height: 45px;
+  background: #ffffff;
+  border: 1px solid #fece00;
+  border-radius: 10px;
+  padding-left: 14px;
+}
+
+.select-day {
+  width: 240px;
+  padding-left: 8px;
+}
+
+.select-time {
+  width: 120px;
+  padding-left: 8px;
+}
+
+.button-add,
+.button-delelte-all {
+  width: 200px;
+  height: 44px;
+  background: #00ba88;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 20px;
+  color: #ffffff;
+  gap: 8px;
+}
+
+.button-delelte-all {
+  background: #ff3d1f;
+}

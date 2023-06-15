@@ -3,6 +3,8 @@ import { db } from "../../firebaseConnection";
 import { auth } from "../../firebaseConnection";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
+import countries from "../../assets/slim-3.json";
+
 import logoCompass from "../../assets/img/LogoCompass.png";
 import imgBackground from "../../assets/img/Backgorund.jpg";
 
@@ -12,6 +14,7 @@ import "./register.css";
 import { addDoc, collection } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSpinner } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const LogIn = () => {
   const [firtName, setFirstName] = useState("");
@@ -77,8 +80,6 @@ const LogIn = () => {
 
       console.log("Cadastrado com Sucesso");
 
-      alert("Cadastrado com Sucesso"); // TOASTFY AQUI
-
       setFirstName("");
       setLastName("");
       setBirthDate("");
@@ -88,6 +89,7 @@ const LogIn = () => {
       setSenha("");
       setconfirmSenha("");
       setError("");
+      toast.success("Usuario cadastrado com sucesso!");
       navigate("/");
     } catch (error) {
       setLoading(false);
@@ -181,15 +183,24 @@ const LogIn = () => {
 
           <div className="input-container">
             <span>country</span>
-            <input
-              type="text"
-              placeholder="Your country"
+            <select
+              id="country"
               value={country}
+              placeholder="Your country"
               onChange={(e) => setCountry(e.target.value)}
               className={
-                error && country === "" ? "error-input" : "normal-input"
+                error && country === ""
+                  ? "error-input input-select"
+                  : "normal-input input-select"
               }
-            />
+            >
+              <option value="">Selecione um país</option>
+              {countries.map((country) => (
+                <option key={country.alpha2Code} value={country.name}>
+                  {country.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="input-container">

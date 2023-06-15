@@ -11,6 +11,7 @@ const Private = ({ children }) => {
     async function checkLogin() {
       const unsub = onAuthStateChanged(auth, (user) => {
         if (user) {
+          console.log(user);
           const userData = {
             uid: user.uid,
             email: user.email,

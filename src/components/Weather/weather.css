@@ -1,0 +1,20 @@
+.city-name {
+  font-weight: 400;
+  font-size: 14px;
+  color: #222222;
+}
+
+.temp {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 60px;
+  color: #222222;
+}
+
+.content-temp {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+}

@@ -1,14 +1,22 @@
 import React from "react";
 
 import Header from "../../components/Header";
-import Weather from "../../components/Weather";
+import PlannerForm from "../../components/PlannerForm";
+import Tabs from "../../components/Tabs";
+
+const handleTabClick = (day) => {
+  console.log("Aba clicada:", day);
+  // Faça o que for necessário com a informação do dia selecionado
+};
 
 const Dashboard = () => {
   return (
     <div>
       <Header />
-      <Weather />
-      Dashboard
+      <PlannerForm />
+      <div>
+        <Tabs onTabClick={handleTabClick} />
+      </div>
     </div>
   );
 };
