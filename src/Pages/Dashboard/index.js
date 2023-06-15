@@ -4,7 +4,14 @@ import Header from "../../components/Header";
 import PlannerForm from "../../components/PlannerForm";
 import Tabs from "../../components/Tabs";
 import { db } from "../../firebaseConnection";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  onSnapshot,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 
 import "./dashboard.css";
 
@@ -21,28 +28,25 @@ const Dashboard = () => {
     const storedData = localStorage.getItem("@detailUser");
     const userData = JSON.parse(storedData);
     const suaColecaoRef = collection(db, `${date}`);
-    const q = query(suaColecaoRef, orderBy("time"));
-    setTasks([]);
-    var item = [];
+    const q = query(
+      suaColecaoRef,
+      orderBy("time"),
+      where("email", "==", `${userData.email}`)
+    );
 
-    getDocs(q)
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          if (doc.data().email === userData.email) {
-            let obej = {
-              time: doc.data().time,
-              title: doc.data().task,
-              id: doc.id,
-            };
-            item.push(obej);
-          }
+    const unsub = onSnapshot(q, (snapshot) => {
+      let list = [];
+
+      snapshot.forEach((doc) => {
+        list.push({
+          id: doc.id,
+          time: doc.data().time,
+          title: doc.data().task,
         });
-        setTasks(item);
-        console.log(item);
-      })
-      .catch((error) => {
-        console.log("Erro ao baixar os itens:", error);
       });
+
+      setTasks(list);
+    });
   }, [date]);
 
   const getDayStyle = (day) => {
