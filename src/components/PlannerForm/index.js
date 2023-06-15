@@ -1,13 +1,20 @@
 import "./plannerForm.css";
 import React, { useState } from "react";
 
+import { toast } from "react-toastify";
+
 import plusIcon from "../../assets/icons/Shape2.svg";
 import minusIcon from "../../assets/icons/Shape.svg";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../firebaseConnection";
 
-const PlannerForm = () => {
+const PlannerForm = ({ date }) => {
   const [task, setTask] = useState("");
   const [day, setDay] = useState("");
   const [time, setTime] = useState("");
+
+  const storedData = localStorage.getItem("@detailUser");
+  const userData = JSON.parse(storedData);
 
   const handleTaskChange = (event) => {
     setTask(event.target.value);
@@ -21,13 +28,37 @@ const PlannerForm = () => {
     setTime(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     console.log("Tarefa:", task);
     console.log("Dia:", day);
     console.log("Horário:", time);
-  };
+    console.log("email ", userData.email);
+
+    try {
+      if (day) {
+        await addDoc(collection(db, `${day}`), {
+          task,
+          day,
+          time,
+          email: userData.email,
+        });
+      } else {
+        await addDoc(collection(db, `${date}`), {
+          task,
+          day,
+          time,
+          email: userData.email,
+        });
+      }
+
+      toast.success("Tarefa Cadastrada com Sucesso!");
+    } catch (error) {
+      toast.warn("Erro ao Cadastrar Tarefa");
+      console.log(error);
+    }
+  }
 
   const handleDeleteAll = () => {
     console.log("Excluir todas as tarefas");
@@ -35,7 +66,7 @@ const PlannerForm = () => {
 
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit} className="form-planner">
+      <form className="form-planner">
         <div className="input-group">
           <input
             className="input-title"
@@ -77,7 +108,7 @@ const PlannerForm = () => {
           />
         </div>
         <div className="submit-buttons">
-          <button className="button-add" type="submit">
+          <button onClick={handleSubmit} className="button-add" type="submit">
             <img className="icon" src={plusIcon} /> Add to Calendar
           </button>
           <button className="button-delelte-all" onClick={handleDeleteAll}>
