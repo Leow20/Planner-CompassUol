@@ -1,12 +1,3 @@
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .backgorund {
   width: 100%;
   height: 100vh;
@@ -101,6 +92,7 @@ h3 {
   line-height: 40px;
   color: #fff;
   margin-top: 115px;
+  margin-left: 0;
 }
 
 .user-icon,
@@ -145,7 +137,11 @@ h3 {
   color: #e9b425;
 }
 
-.loading-icon {
-  margin-top: 3px;
-  animation: spin 1s linear infinite;
+.no-tasks {
+  color: #000;
+  position: absolute;
+  left: 40%;
+  top: 30%;
+  font-size: 22px;
+  line-height: 28px;
 }

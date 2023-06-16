@@ -76,3 +76,7 @@ button {
 .button-delelte-all {
   background: #ff3d1f;
 }
+
+.select-time {
+  padding-right: 5px;
+}

@@ -20,6 +20,7 @@ const LogIn = () => {
   const [erro, setErro] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const Confirm = "Create Account";
   const navigate = useNavigate();
 
   async function sigIn(e) {
@@ -51,7 +52,11 @@ const LogIn = () => {
   return (
     <div className="backgorund">
       <div className="container">
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          Confirm={Confirm}
+        />
         <h1 className="big-title">Welcome,</h1>
         <p className="sub-title">
           To continue browsing safely, log in to the network.

@@ -45,3 +45,11 @@ span {
   color: #e0e0e0;
   text-decoration: underline;
 }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.input-select {
+  padding-right: 20px;
+}

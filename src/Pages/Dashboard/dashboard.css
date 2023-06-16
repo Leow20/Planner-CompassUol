@@ -1,5 +1,8 @@
 .dashboard {
   background-color: rgba(255, 255, 255, 0.95);
+  background-image: url("../../assets/img/LogoBackgorund.jpg");
+  background-repeat: no-repeat;
+  background-position: right bottom;
 }
 
 .box-time,
@@ -17,6 +20,7 @@
   line-height: 20px;
   text-align: center;
   color: #3b3e45;
+  position: relative;
 }
 
 .task-time {
@@ -25,13 +29,28 @@
   font-size: 17px;
   line-height: 20px;
   color: #000;
+  margin-top: -5px;
 }
 
 .tasks-area {
-  width: 1850px;
+  max-width: 1850px;
   height: 815px;
   margin-left: 24px;
   overflow: auto;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.Flipped,
+.Flipped .Content {
+  transform: rotateX(180deg);
+  -ms-transform: rotateX(180deg); /* IE 9 */
+  -webkit-transform: rotateX(180deg); /* Safari and Chrome */
+}
+
+.Flipped-again {
+  transform: rotateX(180deg);
 }
 
 ::-webkit-scrollbar {
@@ -52,18 +71,36 @@
 }
 
 .tasks-container {
-  width: 615px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-  position: relative;
+  flex-wrap: wrap;
 }
 
-.content-task {
+.container-tasks {
+  display: block;
+}
+
+.lasted-repeat {
+  display: inline-block;
+}
+
+.repeat-task-disp {
+  display: inline-block;
+}
+
+.repeat-task {
+  margin-top: 14px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+}
+
+.content-task {
   margin-top: 14px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .color-tag {
@@ -88,11 +125,13 @@ article {
   );
   border: 1px solid #ffffff;
   box-shadow: 8px 8px 5.5px rgba(0, 0, 0, 0.03);
-  backdrop-filter: blur(10.5px);
+
   margin-left: 17px;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 500;
+  position: relative;
 }
 
 .title-task {
@@ -120,4 +159,28 @@ article {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.loading-title {
+  position: absolute;
+  left: 46%;
+  top: 42%;
+}
+
+.loading-icon-dashboard {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+}
+
+.no-tasks {
+  color: #000;
+  position: absolute;
+  left: 45%;
+  top: 32%;
+  font-size: 22px;
+  text-align: center;
+  width: 300px;
 }

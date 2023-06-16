@@ -7,11 +7,14 @@ import plusIcon from "../../assets/icons/Shape2.svg";
 import minusIcon from "../../assets/icons/Shape.svg";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebaseConnection";
+import Modal from "../Modal";
 
 const PlannerForm = ({ date }) => {
   const [task, setTask] = useState("");
   const [day, setDay] = useState("");
   const [time, setTime] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const Confirm = "Confirm";
 
   const storedData = localStorage.getItem("@detailUser");
   const userData = JSON.parse(storedData);
@@ -60,12 +63,23 @@ const PlannerForm = ({ date }) => {
     }
   }
 
-  const handleDeleteAll = () => {
-    console.log("Excluir todas as tarefas");
+  const handleDeleteAll = (event) => {
+    event.preventDefault();
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
     <div className="form-container">
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        Confirm={Confirm}
+        date={date}
+      />
       <form className="form-planner">
         <div className="input-group">
           <input

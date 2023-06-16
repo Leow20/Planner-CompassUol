@@ -6,6 +6,8 @@ import Tabs from "../../components/Tabs";
 import { db } from "../../firebaseConnection";
 import {
   collection,
+  deleteDoc,
+  doc,
   getDocs,
   onSnapshot,
   orderBy,
@@ -14,10 +16,24 @@ import {
 } from "firebase/firestore";
 
 import "./dashboard.css";
+import backgorundLogo from "../../assets/img/LogoBackgorund.jpg";
+import { toast } from "react-toastify";
+import { FaFrown, FaSpinner } from "react-icons/fa";
 
 const Dashboard = () => {
   const [date, setDate] = useState("Monday");
   const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const storedData = localStorage.getItem("@detailUser");
+  const userData = JSON.parse(storedData);
+  const suaColecaoRef = collection(db, `${date}`);
+
+  const q = query(
+    suaColecaoRef,
+    orderBy("time"),
+    where("email", "==", `${userData.email}`)
+  );
 
   const handleTabClick = (day) => {
     console.log("Aba clicada:", day);
@@ -25,29 +41,27 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    const storedData = localStorage.getItem("@detailUser");
-    const userData = JSON.parse(storedData);
-    const suaColecaoRef = collection(db, `${date}`);
-    const q = query(
-      suaColecaoRef,
-      orderBy("time"),
-      where("email", "==", `${userData.email}`)
-    );
+    setLoading(true);
 
+    let list = [];
     const unsub = onSnapshot(q, (snapshot) => {
-      let list = [];
-
       snapshot.forEach((doc) => {
         list.push({
           id: doc.id,
           time: doc.data().time,
           title: doc.data().task,
+          email: doc.data().email,
         });
       });
 
+      setLoading(false);
       setTasks(list);
     });
   }, [date]);
+
+  const itemsRepetidos = tasks.filter(
+    (task, index) => tasks.findIndex((t) => t.time === task.time) !== index
+  );
 
   const getDayStyle = (day) => {
     let style = {};
@@ -81,33 +95,114 @@ const Dashboard = () => {
     return style;
   };
 
+  async function deleteTask(id, day) {
+    const docRef = doc(db, `${day}`, id);
+    await deleteDoc(docRef)
+      .then(() => {
+        setTasks(list);
+        toast.success("Tarefa deletada com sucesso!");
+      })
+      .catch(() => {
+        toast.warn("Erro ao deletar tarefa!");
+      });
+
+    setLoading(true);
+
+    let list = [];
+    const unsub = onSnapshot(q, (snapshot) => {
+      snapshot.forEach((doc) => {
+        list.push({
+          id: doc.id,
+          time: doc.data().time,
+          title: doc.data().task,
+          email: doc.data().email,
+        });
+      });
+
+      setLoading(false);
+    });
+    setTasks(list);
+  }
+
+  console.log(tasks);
+
   return (
     <div className="dashboard">
-      <Header />
-      <PlannerForm date={date} />
-      <div>
-        <Tabs onTabClick={handleTabClick} />
-      </div>
-      <div className="tasks-area ">
-        <div className="box-time">Time</div>
+      {loading && (
+        <div>
+          <sann className="loading-title">We are loading your tasks.</sann>
+          <FaSpinner className="loading-icon-dashboard" />
+        </div>
+      )}
+      <div className="tasks-container">
+        {tasks.length === 0 && !loading && (
+          <span className="no-tasks">
+            You don't have any tasks on this day. :(
+          </span>
+        )}
+        <Header />
+        <PlannerForm date={date} />
+        <div>
+          <Tabs onTabClick={handleTabClick} />
+        </div>
+        <div className="tasks-area Flipped">
+          <div className="Flipped-again">
+            <div className="box-time">Time</div>
 
-        <div className="tasks-container">
-          <ul>
-            {tasks.map((post) => {
-              return (
-                <div className="content-task" key={post.id}>
-                  <div style={getDayStyle(date)} className="task-time">
-                    {post.time}
-                  </div>
-                  <article>
-                    <div style={getDayStyle(date)} className="color-tag"></div>
-                    <button className="delete-task">Delete</button>
-                    <p className="title-task">{post.title}</p>
-                  </article>
-                </div>
-              );
-            })}
-          </ul>
+            {!loading && (
+              <ul>
+                {tasks.map((post, index) => {
+                  const isRepetido = itemsRepetidos.some(
+                    (task) => task.time === post.time
+                  );
+                  const taskTimeStyle = isRepetido
+                    ? { backgroundColor: "gray" }
+                    : getDayStyle(date);
+                  const taskClassName = isRepetido
+                    ? "repeat-task"
+                    : "content-task";
+                  var taskDisp = isRepetido
+                    ? "repeat-task-disp"
+                    : "container-tasks";
+                  const previousTime = index > 0 ? tasks[index - 1].time : null;
+                  const nextTime =
+                    index < tasks.length - 1 ? tasks[index + 1].time : null;
+                  const isLastRepeatedTask =
+                    post.time !== nextTime && post.time === previousTime;
+
+                  if (isLastRepeatedTask) {
+                    taskDisp = "lasted-repeat";
+                  }
+
+                  return (
+                    <div className={taskDisp} key={post.id}>
+                      <div className={taskClassName}>
+                        {previousTime !== post.time && (
+                          <div style={taskTimeStyle} className="task-time">
+                            {post.time}
+                          </div>
+                        )}
+
+                        <article>
+                          <div
+                            style={taskTimeStyle}
+                            className="color-tag"
+                          ></div>
+                          <button
+                            className="delete-task"
+                            onClick={() => deleteTask(post.id, date)}
+                          >
+                            Delete
+                          </button>
+                          <p className="title-task">{post.title}</p>
+                        </article>
+                      </div>
+                    </div>
+                  );
+                })}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </div>

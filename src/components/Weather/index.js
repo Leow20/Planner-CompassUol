@@ -9,6 +9,7 @@ import "./weather.css";
 
 function Weather() {
   const [weatherData, setWeatherData] = useState(null);
+  const [icon, setIcon] = useState("");
   const [userInfo, setUserInfo] = useState([]);
   const [cidade, setCidade] = useState("");
 
@@ -50,12 +51,14 @@ function Weather() {
 
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${apiKey}`;
 
-        console.log(url);
-
         try {
           const response = await axios.get(url);
-          console.log(response);
+
           setWeatherData(response.data);
+
+          setIcon(
+            `https://openweathermap.org/img/wn/${response.data.weather[0].icon}.png`
+          );
         } catch (error) {
           console.log("Erro ao obter dados do clima:", error);
         }
@@ -73,7 +76,7 @@ function Weather() {
             {weatherData.name} - {userInfo[0].country}
           </p>
           <div className="content-temp">
-            <img src={cloudIcon} />
+            <img src={icon} />
             <p className="temp">
               {Math.round(weatherData.main.temp - 273.15)}°
             </p>
