@@ -144,9 +144,9 @@ const Dashboard = () => {
         <div>
           <Tabs onTabClick={handleTabClick} date={date} />
         </div>
-        <div className="tasks-area ">
-          <div className="box-time">Time</div>
-          {!loading && (
+        <div className="box-time">Time</div>
+        <div className="tasks-area">
+          {loading && (
             <ul>
               {tasks.map((post, index) => {
                 const isRepetido = itemsRepetidos.some(

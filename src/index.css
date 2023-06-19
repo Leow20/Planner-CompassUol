@@ -22,7 +22,14 @@ button {
   }
 }
 
-.loading-icon {
+.loading-icon,
+.loading-icon-private {
   margin-top: 3px;
   animation: spin 1s linear infinite;
+}
+
+.loading-icon-private {
+  height: 60px;
+  margin: 25% 50%;
+  width: 60px;
 }

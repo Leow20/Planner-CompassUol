@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { auth } from "../firebaseConnection";
 import { onAuthStateChanged } from "firebase/auth";
 import { Navigate } from "react-router-dom";
+import { FaSpinner } from "react-icons/fa";
 
 const Private = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -33,7 +34,9 @@ const Private = ({ children }) => {
   if (loading) {
     return (
       <div>
-        <h1>Carregando...</h1>
+        <h1>
+          <FaSpinner className="loading-icon-private" />
+        </h1>
       </div>
     );
   }
