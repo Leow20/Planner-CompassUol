@@ -171,15 +171,14 @@ const Dashboard = () => {
                   <div className={taskDisp} key={post.id}>
                     <div className={taskClassName}>
                       {previousTime !== post.time && (
-                        <div>
-                          <div className="teste"></div>
-                          <div style={taskTimeStyle} className="task-time">
-                            {post.time}
-                          </div>
+                        <div style={taskTimeStyle} className="task-time">
+                          {isRepetido && <div className="ball"></div>}
+                          {post.time}
                         </div>
                       )}
 
                       <article>
+                        {isRepetido && <div className="line"></div>}
                         <div style={taskTimeStyle} className="color-tag"></div>
                         <button
                           className="delete-task"

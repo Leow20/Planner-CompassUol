@@ -24,7 +24,7 @@
 }
 
 .tasks-area {
-  max-width: 1850px !important;
+  max-width: 1850px;
   height: 815px;
   margin-left: 24px;
   overflow: auto;
@@ -92,6 +92,7 @@
   border-radius: [object Object]px;
   background: #ff8000;
   border-radius: 15px 0px 0px 15px;
+  z-index: 500;
 }
 
 article {
@@ -105,13 +106,13 @@ article {
   );
   border: 1px solid #ffffff;
   box-shadow: 8px 8px 5.5px rgba(0, 0, 0, 0.03);
-
   margin-left: 17px;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 500;
   position: relative;
+  margin-bottom: 2px;
 }
 
 .title-task {
@@ -168,4 +169,25 @@ article {
 
 .teste {
   display: block;
+}
+
+.line {
+  position: absolute;
+  top: 38px;
+  left: -7px;
+  z-index: 800;
+  width: 529px;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.ball {
+  position: absolute;
+  top: 28px;
+  left: 84px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  z-index: 700;
+  background-color: rgba(0, 0, 0, 0.7);
 }
