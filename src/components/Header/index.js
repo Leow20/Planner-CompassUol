@@ -53,12 +53,12 @@ const Header = () => {
 
       <div className="dark-logo">
         <a href="https://compass.uol/en/home/">
-          <img src={darkLogo} />
+          <img src={darkLogo} alt="Logo compass" />
         </a>
       </div>
 
       <div className="logout">
-        <img src={LogoutIcon} onClick={handleLogout} />
+        <img src={LogoutIcon} onClick={handleLogout} alt="icone logout" />
         <span>Logout</span>
       </div>
     </header>

@@ -41,7 +41,7 @@ const PlannerForm = ({ date }) => {
     console.log("email ", userData.email);
 
     try {
-      if (task == "" || time == "") {
+      if (task === "" || time === "") {
         toast.warn("Preencha todos os campos");
         return new Error();
       }
@@ -131,10 +131,12 @@ const PlannerForm = ({ date }) => {
         </div>
         <div className="submit-buttons">
           <button onClick={handleSubmit} className="button-add" type="submit">
-            <img className="icon" src={plusIcon} /> Add to Calendar
+            <img className="icon" src={plusIcon} alt="Icone adicionar tarefa" />{" "}
+            Add to Calendar
           </button>
           <button className="button-delelte-all" onClick={handleDeleteAll}>
-            <img className="icon" src={minusIcon} /> Delete All
+            <img className="icon" src={minusIcon} alt="Icone deletar tarefas" />{" "}
+            Delete All
           </button>
         </div>
       </form>

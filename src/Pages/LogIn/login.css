@@ -41,10 +41,12 @@ h3 {
 
 .img-background img {
   max-width: 960px;
+  height: 100vh;
   position: absolute;
   right: 0;
   top: 0;
   z-index: 100;
+  object-fit: cover;
 }
 
 .logo-compass img {
@@ -144,4 +146,166 @@ h3 {
   top: 30%;
   font-size: 22px;
   line-height: 28px;
+}
+
+@media screen and (max-width: 1760px) {
+  .container,
+  .container-register {
+    left: 12%;
+    top: 197px;
+  }
+
+  .container-register {
+    left: 9%;
+    top: 71px;
+  }
+
+  .img-background img {
+    max-width: 50%;
+  }
+
+  .logo-compass img {
+    right: 70px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .container,
+  .container-register {
+    left: 9%;
+  }
+
+  .logo-compass img {
+    right: 35px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .container,
+  .container-register {
+    transform: scale(0.9);
+    left: 5%;
+  }
+
+  .container-register {
+    left: 2%;
+  }
+
+  .logo-compass img {
+    width: 380px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .backgorund {
+    background-image: url("../../assets/img/Backgorund.jpg");
+    background-repeat: no-repeat;
+    object-fit: cover;
+  }
+
+  body {
+    background: linear-gradient(180deg, #33383d 0%, #1c1d20 100%);
+  }
+
+  .img-background img {
+    display: none;
+  }
+  .container,
+  .container-register {
+    width: 479px;
+    height: 793px;
+    padding: 43px;
+    background: linear-gradient(180deg, #33383d 0%, #1c1d20 100%);
+    box-shadow: 12px 15px 15px rgba(0, 0, 0, 0.35);
+    left: 24%;
+    top: 15%;
+    border-radius: 3%;
+  }
+  .container-register {
+    width: 576px;
+    height: 1014px;
+    left: 15%;
+    top: 7%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .container,
+  .container-register {
+    background: linear-gradient(180deg, #33383d 0%, #1c1d20 100%);
+    box-shadow: 12px 15px 15px rgba(0, 0, 0, 0.35);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 176px;
+    border-radius: 3%;
+  }
+
+  .input-select {
+    width: 89%;
+  }
+
+  .container-register {
+    padding: 53px;
+  }
+
+  .logo-compass img {
+    width: 280px;
+    top: 90px;
+    left: 30%;
+  }
+
+  .form button {
+    width: 280px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .container,
+  .container-register {
+    height: 1010px;
+    padding: 110px;
+    padding-top: 170px;
+  }
+  .container-register {
+    top: 96px;
+    padding: 53px;
+  }
+
+  .form button {
+    width: 93%;
+  }
+  .logo-compass img {
+    left: 22%;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .backgorund {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #33383d 0%, #1c1d20 100%);
+  }
+  .container,
+  .container-register {
+    padding: 55px;
+    padding-top: 170px;
+    box-shadow: none;
+
+    background: transparent;
+  }
+  .logo-compass img {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .container,
+  .container-register {
+    padding: 10px;
+    padding-top: 170px;
+    box-shadow: none;
+    background: transparent;
+  }
 }

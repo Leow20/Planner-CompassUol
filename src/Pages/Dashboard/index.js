@@ -8,7 +8,6 @@ import {
   collection,
   deleteDoc,
   doc,
-  getDocs,
   onSnapshot,
   orderBy,
   query,
@@ -24,10 +23,13 @@ const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [tasksTemp, setTasksTemp] = useState([]);
+
   const storedData = localStorage.getItem("@detailUser");
   const userData = JSON.parse(storedData);
 
   const myCollection = collection(db, "tarefas");
+
+  const moment = require("moment");
 
   function handleTabClick(day) {
     console.log("Aba clicada:", day);
@@ -42,7 +44,7 @@ const Dashboard = () => {
       where("day", "==", `${date}`)
     );
 
-    const unsub = onSnapshot(q, (snapshot) => {
+    onSnapshot(q, (snapshot) => {
       let list = [];
       snapshot.forEach((doc) => {
         setLoading(true);
@@ -56,7 +58,6 @@ const Dashboard = () => {
       });
       setTasksTemp(list);
       setLoading(false);
-      console.log("a");
     });
   }, [date]);
 
@@ -75,6 +76,9 @@ const Dashboard = () => {
   const itemsRepetidos = tasks.filter(
     (task, index) => tasks.findIndex((t) => t.time === task.time) !== index
   );
+
+  console.log(itemsRepetidos);
+  console.log("a");
 
   const getDayStyle = (day) => {
     let style = {};
@@ -149,7 +153,7 @@ const Dashboard = () => {
                   (task) => task.time === post.time
                 );
                 const taskTimeStyle = isRepetido
-                  ? { backgroundColor: "gray" }
+                  ? { backgroundColor: "gray", color: "white" }
                   : getDayStyle(date);
                 const taskClassName = isRepetido
                   ? "repeat-task"
@@ -173,10 +177,9 @@ const Dashboard = () => {
                       {previousTime !== post.time && (
                         <div style={taskTimeStyle} className="task-time">
                           {isRepetido && <div className="ball"></div>}
-                          {post.time}
+                          {moment(post.time, "HH:mm").format("HH[h]mm[m]")}
                         </div>
                       )}
-
                       <article>
                         {isRepetido && <div className="line"></div>}
                         <div style={taskTimeStyle} className="color-tag"></div>

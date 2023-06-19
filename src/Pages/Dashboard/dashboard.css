@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 800;
+  font-weight: 400;
   font-size: 17px;
   line-height: 20px;
   text-align: center;
@@ -23,14 +23,21 @@
   position: relative;
 }
 
+.box-time {
+  position: absolute;
+  top: 271px;
+  left: 24px;
+}
+
 .tasks-area {
   max-width: 1850px;
-  height: 815px;
+  height: 730px;
   margin-left: 24px;
   overflow: auto;
   white-space: nowrap;
   display: flex;
   flex-direction: column;
+  margin-top: 81px;
 }
 
 ::-webkit-scrollbar {
@@ -62,7 +69,7 @@
 }
 
 .lasted-repeat {
-  display: block;
+  display: inline-block;
 }
 
 .repeat-task-disp {
@@ -190,4 +197,7 @@ article {
   border-radius: 50%;
   z-index: 700;
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+@media screen and (max-width: 1760px) {
 }

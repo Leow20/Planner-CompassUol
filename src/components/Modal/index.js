@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import {
   collection,
   deleteDoc,
-  doc,
   getDocs,
   query,
   where,
@@ -13,12 +12,19 @@ import { db } from "../../firebaseConnection";
 import { toast } from "react-toastify";
 
 function Modal({ isOpen, onClose, Confirm, date }) {
+  const storedData = localStorage.getItem("@detailUser");
+  const userData = JSON.parse(storedData);
+
   if (!isOpen) {
     return null;
   }
   const collectionRef = collection(db, "tarefas");
 
-  const q = query(collectionRef, where("day", "==", `${date}`));
+  const q = query(
+    collectionRef,
+    where("email", "==", userData.email),
+    where("day", "==", `${date}`)
+  );
 
   async function handleDeleteTasks() {
     try {
