@@ -1,7 +1,14 @@
 import React from "react";
 import "./modal.css";
 import { Link } from "react-router-dom";
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../../firebaseConnection";
 import { toast } from "react-toastify";
 
@@ -9,11 +16,13 @@ function Modal({ isOpen, onClose, Confirm, date }) {
   if (!isOpen) {
     return null;
   }
+  const collectionRef = collection(db, "tarefas");
+
+  const q = query(collectionRef, where("day", "==", `${date}`));
 
   async function handleDeleteTasks() {
-    const collectionRef = collection(db, `${date}`);
     try {
-      const querySnapshot = await getDocs(collectionRef);
+      const querySnapshot = await getDocs(q);
       const deletePromises = querySnapshot.docs.map((doc) =>
         deleteDoc(doc.ref)
       );

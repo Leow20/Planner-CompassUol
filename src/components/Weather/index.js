@@ -3,8 +3,6 @@ import axios from "axios";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConnection";
 
-import cloudIcon from "../../assets/icons/cloudIcon.svg";
-
 import "./weather.css";
 
 function Weather() {
@@ -76,7 +74,7 @@ function Weather() {
             {weatherData.name} - {userInfo[0].country}
           </p>
           <div className="content-temp">
-            <img src={icon} />
+            <img className="img-clima" src={icon} alt="icone do clima" />
             <p className="temp">
               {Math.round(weatherData.main.temp - 273.15)}°
             </p>

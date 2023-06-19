@@ -29,8 +29,6 @@ const LogIn = () => {
   const [isAdult, setIsAdult] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const regex =
-    /^(?=.*[!@#$%^&*()\-=_+[\]{};':"\\|,.<>/?])(?=.*[A-Z])(?=.*[0-9]).+$/;
 
   async function newUser(e) {
     e.preventDefault();
@@ -51,11 +49,6 @@ const LogIn = () => {
       confirmSenha === ""
     ) {
       setError("fill");
-      return;
-    }
-
-    if (!regex.test(senha)) {
-      setError("weakPass");
       return;
     }
 

@@ -14,6 +14,7 @@ const PlannerForm = ({ date }) => {
   const [day, setDay] = useState("");
   const [time, setTime] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const Confirm = "Confirm";
 
   const storedData = localStorage.getItem("@detailUser");
@@ -40,22 +41,29 @@ const PlannerForm = ({ date }) => {
     console.log("email ", userData.email);
 
     try {
-      if (day) {
-        await addDoc(collection(db, `${day}`), {
+      if (task == "" || time == "") {
+        toast.warn("Preencha todos os campos");
+        return new Error();
+      }
+
+      if (day !== "") {
+        await addDoc(collection(db, "tarefas"), {
           task,
           day,
           time,
           email: userData.email,
         });
       } else {
-        await addDoc(collection(db, `${date}`), {
+        await addDoc(collection(db, "tarefas"), {
           task,
-          day,
+          day: date,
           time,
           email: userData.email,
         });
       }
 
+      //  setTask("");
+      //  setTime("");
       toast.success("Tarefa Cadastrada com Sucesso!");
     } catch (error) {
       toast.warn("Erro ao Cadastrar Tarefa");
