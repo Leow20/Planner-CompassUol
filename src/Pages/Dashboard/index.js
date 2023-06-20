@@ -142,7 +142,7 @@ const Dashboard = () => {
         </div>
         <div className="box-time">Time</div>
         <div className="tasks-area">
-          {loading && (
+          {!loading && (
             <ul>
               {tasks.map((post, index) => {
                 const isRepetido = itemsRepetidos.some(
