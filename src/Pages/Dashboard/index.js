@@ -32,7 +32,6 @@ const Dashboard = () => {
   const moment = require("moment");
 
   function handleTabClick(day) {
-    console.log("Aba clicada:", day);
     setDate(day);
   }
 
@@ -62,23 +61,20 @@ const Dashboard = () => {
   }, [date]);
 
   useEffect(() => {
-    console.log(tasksTemp);
     if (tasksTemp.length > 0) {
-      console.log(tasksTemp[0].day);
       if (tasksTemp[0].day === date) {
         setTasks(tasksTemp);
+        console.log(tasks);
       }
     } else {
       setTasks([]);
+      console.log(tasks);
     }
   }, [tasksTemp]);
 
   const itemsRepetidos = tasks.filter(
     (task, index) => tasks.findIndex((t) => t.time === task.time) !== index
   );
-
-  console.log(itemsRepetidos);
-  console.log("a");
 
   const getDayStyle = (day) => {
     let style = {};

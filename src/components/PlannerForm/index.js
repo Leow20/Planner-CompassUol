@@ -35,11 +35,6 @@ const PlannerForm = ({ date }) => {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    console.log("Tarefa:", task);
-    console.log("Dia:", day);
-    console.log("Horário:", time);
-    console.log("email ", userData.email);
-
     try {
       if (task === "" || time === "") {
         toast.warn("Preencha todos os campos");
