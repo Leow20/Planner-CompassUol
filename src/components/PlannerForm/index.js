@@ -41,7 +41,41 @@ const PlannerForm = ({ date }) => {
         return new Error();
       }
 
-      if (day !== "") {
+      if (day === "Everyday") {
+        const daysOfWeek = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ];
+        for (const weekday of daysOfWeek) {
+          await addDoc(collection(db, "tarefas"), {
+            task,
+            day: weekday,
+            time,
+            email: userData.email,
+          });
+        }
+      } else if (day === "Working Days") {
+        const daysOfWeek = [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ];
+        for (const weekday of daysOfWeek) {
+          await addDoc(collection(db, "tarefas"), {
+            task,
+            day: weekday,
+            time,
+            email: userData.email,
+          });
+        }
+      } else if (day !== "") {
         await addDoc(collection(db, "tarefas"), {
           task,
           day,
@@ -57,8 +91,9 @@ const PlannerForm = ({ date }) => {
         });
       }
 
-      //  setTask("");
-      //  setTime("");
+      setTask("");
+      setTime("");
+      setDay("");
       toast.success("Tarefa Cadastrada com Sucesso!");
     } catch (error) {
       toast.warn("Erro ao Cadastrar Tarefa");
@@ -104,6 +139,8 @@ const PlannerForm = ({ date }) => {
             placeholder="Select a Day"
           >
             <option value="">Select a Day</option>
+            <option value="Everyday">Everyday</option>
+            <option value="Working Days">Working Days</option>
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
             <option value="Wednesday">Wednesday</option>
@@ -113,7 +150,6 @@ const PlannerForm = ({ date }) => {
             <option value="Sunday">Sunday</option>
           </select>
         </div>
-
         <div className="input-group">
           <input
             className="select-time"

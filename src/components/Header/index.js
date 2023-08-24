@@ -52,7 +52,7 @@ const Header = () => {
       </div>
 
       <div className="dark-logo">
-        <a href="https://compass.uol/en/home/">
+        <a href="https://compass.uol/en/home/" target="_blank">
           <img src={darkLogo} alt="Logo compass" />
         </a>
       </div>
