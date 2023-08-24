@@ -1,7 +1,3 @@
-<div align="center">
-  <img src="project_logo.png" alt="Project Logo" width="200"/>
-</div>
-
 <h1 align="center">📅 Weekly Task Manager</h1>
 
 <p align="center">
@@ -19,17 +15,15 @@ Siga os passos abaixo para configurar e instalar o projeto:
 
 2. Dependências
 
- npm install firebase react-router-dom react-icons moment react-toastify axios
-
-
-
+   ```sh
+   npm install firebase react-router-dom react-icons moment react-toastify axios
+   
 ## 📌 Uso
 
 1. **Iniciar o Projeto:** Para iniciar o projeto, utilize o seguinte comando no terminal:
 
    ```sh
    npm start
-
 
 Após a execução do comando, uma nova aba será aberta no navegador.
 
