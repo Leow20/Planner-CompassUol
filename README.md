@@ -27,8 +27,8 @@ Siga os passos abaixo para configurar e instalar o projeto:
 
 1. **Iniciar o Projeto:** Para iniciar o projeto, utilize o seguinte comando no terminal:
 
-```sh
-npm start
+   ```sh
+   npm start
 
 
 Após a execução do comando, uma nova aba será aberta no navegador.
