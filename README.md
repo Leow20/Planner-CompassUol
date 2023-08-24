@@ -25,51 +25,55 @@ Siga os passos abaixo para configurar e instalar o projeto:
 
 ## 📌 Uso
 
-Para iniciara o projeto deve-se usar o comando:
+1. **Iniciar o Projeto:** Para iniciar o projeto, utilize o seguinte comando no terminal:
 
-------------------------------------------------
-npm run dev
-------------------------------------------------
+```sh
+npm start
 
-Ao iniciar o projeto uma aba será aberta no navegador.
 
-A tela inicial do projeto é a página de login.
+Após a execução do comando, uma nova aba será aberta no navegador.
 
-O usuario deve inserir um email e senha, caso esse email não estiver
-cadastrado abrirá um modal pergunta se o usuario gostaria de criar uma conta.
+2. **Página Inicial e Login:** Ao iniciar o projeto, a página inicial exibirá a tela de login. Insira seu email e senha.
 
-Na página de registro o usuario deve preencher todos os campos seguindo algumas validações
-tais como:
+Se o email não estiver cadastrado, um modal será exibido perguntando se você deseja criar uma conta.
 
-	- Ser maior de 18 anos.
-	- Possuir um email com credencias válidas.
-	- Uma senha forte que tenha: 6 caracteres, 1 letra maiuscula, 1 numero e 1 caracter especial.
-	- Os campos senha e confirmar senha devem ser iguais.
+3. **Registro de Usuário:**
+ * Acesse a página de registro para criar uma conta.
+ * Preencha todos os campos seguindo as seguintes validações:
+ * Ter mais de 18 anos.
+ * Ter um email válido.
+ * Escolher uma senha forte (mínimo de 6 caracteres, 1 letra maiúscula, 1 número e 1 caractere especial).
+ * Confirmar a senha, que deve ser igual à senha escolhida.
 
-Após o cadastro o usuario será redirecionado para a página de login novamente.
+4. **Redirecionamento Após Registro:** Após o cadastro, você será redirecionado novamente para a página de login.
 
-Caso o usaurio erre o Email ou Senha, será mostrado um erro, caso esteja certo
-será direcionado para a dashboard.
+5. **Login Bem-Sucedido:** Ao inserir o email e a senha corretos, você será direcionado para a dashboard.
 
-Na dashboard o usuario irá encontrar todas as tarefas cadastradas.
+6. **Dashboard:**
 
-Também no header encontra o horário local, e o clima da cidade preenchida no momento do cadastro.
+ * Na dashboard, você encontrará todas as tarefas cadastradas.
+ * No cabeçalho, é exibido o horário local e o clima da cidade preenchida no momento do cadastro.
+ 
+7. **Recursos no Cabeçalho:**
 
-Ao lado um link para o site official da compass UOL e um botão de logout, que tira todas as permissões
-do usuario, não podendo mais acessar a dashboard.
+ * Um link para o site oficial da Compass UOL.
+ * Um botão de logout, que encerrará sua sessão e revogará suas permissões, impedindo o acesso à dashboard.
 
-Em baixo do Header o usuario pode cadastrar as tarefas, sendo obrigatório o preenchimento do conteudo da task
-e seu horário, e opcional o dia da semana.
+8. **Cadastro de Tarefas:**
 
-Caso não tenha um dia da semana selecionado será defindo o dia que estiver em evidência.
+ * Logo abaixo do cabeçalho, você pode cadastrar novas tarefas.
+ * É obrigatório preencher o conteúdo da tarefa e o horário.
+ * O campo para selecionar o dia da semana é opcional.
+ * Se nenhum dia da semana for selecionado, será considerado o dia em evidência.
 
-Existe uma função de deletar todas as taks do dia que o usuario está.
+9. **Gerenciamento de Tarefas:**
 
-E um botão delete em cada tarefa, onde deleta apenas a tarefa desejada.
+ * Uma função permite deletar todas as tarefas do dia atual.
+ * Cada tarefa possui um botão de delete individual para removê-la.
 
-Caso o usuario cadastre tarefas no mesmo dia com horario repetido, elas entram em conflito
-mudando sua cor para cinza e recebendo uma linha, que percorre as tarefas repetidas.
+10. **Conflitos de Tarefas:**
 
+ * Se você cadastrar tarefas no mesmo dia com horários repetidos, elas serão destacadas em cinza e receberão uma linha indicativa.
 
 ## 📜 Licença
 
