@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+<div align="center">
+  <img src="project_logo.png" alt="Project Logo" width="200"/>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">📅 Weekly Task Manager</h1>
 
-## Available Scripts
+<p align="center">
+  Um aplicativo inteligente para organizar suas tarefas semanais de forma eficiente! ✨
+</p>
 
-In the project directory, you can run:
+## 🚀 Instalação
 
-### `npm start`
+Siga os passos abaixo para configurar e instalar o projeto:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone este repositório:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ```sh
+   git clone https://github.com/seu-usuario/nome-do-repositorio.git
 
-### `npm test`
+2. Dependências
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ npm install firebase react-router-dom react-icons moment react-toastify axios
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📌 Uso
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para iniciara o projeto deve-se usar o comando:
 
-### `npm run eject`
+------------------------------------------------
+npm run dev
+------------------------------------------------
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Ao iniciar o projeto uma aba será aberta no navegador.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A tela inicial do projeto é a página de login.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+O usuario deve inserir um email e senha, caso esse email não estiver
+cadastrado abrirá um modal pergunta se o usuario gostaria de criar uma conta.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Na página de registro o usuario deve preencher todos os campos seguindo algumas validações
+tais como:
 
-## Learn More
+	- Ser maior de 18 anos.
+	- Possuir um email com credencias válidas.
+	- Uma senha forte que tenha: 6 caracteres, 1 letra maiuscula, 1 numero e 1 caracter especial.
+	- Os campos senha e confirmar senha devem ser iguais.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Após o cadastro o usuario será redirecionado para a página de login novamente.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Caso o usaurio erre o Email ou Senha, será mostrado um erro, caso esteja certo
+será direcionado para a dashboard.
 
-### Code Splitting
+Na dashboard o usuario irá encontrar todas as tarefas cadastradas.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Também no header encontra o horário local, e o clima da cidade preenchida no momento do cadastro.
 
-### Analyzing the Bundle Size
+Ao lado um link para o site official da compass UOL e um botão de logout, que tira todas as permissões
+do usuario, não podendo mais acessar a dashboard.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Em baixo do Header o usuario pode cadastrar as tarefas, sendo obrigatório o preenchimento do conteudo da task
+e seu horário, e opcional o dia da semana.
 
-### Making a Progressive Web App
+Caso não tenha um dia da semana selecionado será defindo o dia que estiver em evidência.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Existe uma função de deletar todas as taks do dia que o usuario está.
 
-### Advanced Configuration
+E um botão delete em cada tarefa, onde deleta apenas a tarefa desejada.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Caso o usuario cadastre tarefas no mesmo dia com horario repetido, elas entram em conflito
+mudando sua cor para cinza e recebendo uma linha, que percorre as tarefas repetidas.
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📜 Licença
 
-### `npm run build` fails to minify
+O código é aberto e não possui uma licença para uso.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📞 Contato
+Para qualquer dúvida ou feedback, entre em contato pelo email: Leonardowinter20@gmail.com
+
+
+
