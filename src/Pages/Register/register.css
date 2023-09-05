@@ -14,7 +14,7 @@ span {
   line-height: 20px;
   margin-top: 20px;
   padding-right: 17px;
-  width: 100px;
+  width: 137px;
 }
 
 span {
@@ -22,15 +22,12 @@ span {
 }
 
 .form-register button {
-  width: 478px;
-  margin-top: 56px;
+  width: 356px;
+  margin-top: 38px;
 }
 
 .warning-register {
-  width: 500px;
-  position: absolute;
-  left: 0px;
-  bottom: 92px;
+  width: 100%;
   display: flex;
   font-weight: 700;
   font-size: 14px;
@@ -52,4 +49,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .input-select {
   padding-right: 20px;
+}
+
+.container-register {
+  margin-top: -49px;
+}
+
+.container-register {
+  transform: scale(0.8);
+}
+
+@media screen and (max-width: 420px) {
+  .main-register {
+    transform: scale(0.68);
+  }
 }
